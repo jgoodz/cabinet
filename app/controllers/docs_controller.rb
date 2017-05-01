@@ -9,11 +9,13 @@ before_action :find_doc, only: [:show, :edit, :update, :destory]
 	end
 
 	def new
-		@doc = Doc.new
+		#@doc = Doc.new
+		@doc = current_user.docs.build
 	end
 
 	def create
-		@doc = Doc.new(doc_params)
+		#@doc = Doc.new(doc_params)
+		@doc = current_user.docs.build(doc_params)
 
 		if @doc.save
 			redirect_to @doc
